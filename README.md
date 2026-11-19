@@ -1,20 +1,17 @@
-# dsh-armory · 军械库
+# DSH 能力中心
 
-中文 | [English](README.en.md)
+> 将技能（Skill）、MCP、专家与插件管理统一融入 DSH 的工作界面。
 
-> **你不需要记住 DSH 里装过什么。**
-> 军械库把 MCP、技能、专家、插件和四个市场收进一块面板：316 个连接器、19 万+ 技能、429 位专家。装过什么、连没连上、哪些工具在吃 token，打开就能看见；会话里要用什么，也能直接叫出来。
+本仓库是基于 dsh-armory 的定制版本。用户界面以 DSH 原生能力管理为定位，不以独立插件或社区生态产品为定位。仓库来源和 MIT 版权信息保留在开发文档与许可证中，不作为产品内的推广入口。
 
-<p align="center">
-  <a href="https://github.com/2026heshao/dsh-armory/stargazers"><img src="https://img.shields.io/github/stars/2026heshao/dsh-armory?style=social" alt="stars"></a>
-  <a href="https://github.com/2026heshao/dsh-armory/releases"><img src="https://img.shields.io/github/v/release/2026heshao/dsh-armory?label=release" alt="release"></a>
-  <a href="https://www.npmjs.com/package/dsh-armory"><img src="https://img.shields.io/npm/dt/dsh-armory?label=npm%20downloads" alt="npm downloads"></a>
-  <a href="./LICENSE"><img src="https://img.shields.io/badge/license-MIT-green" alt="license"></a>
-  <img src="https://img.shields.io/badge/DSH-%3E%3D0.1.5--rc.1-blue" alt="DSH">
-  <a href="https://github.com/topics/dsh-plugin"><img src="https://img.shields.io/badge/topic-dsh--plugin-8b5cf6" alt="topic: dsh-plugin"></a>
-</p>
+## 定制方向
 
-![MCP 全局管理面板](docs/images/mcp-overview.png)
+- **移除工具裁缝**：包括侧边栏/标签页入口、统计面板及其专属调用链，避免留下不可用入口。
+- **移除产品内推广**：不在界面要求用户为仓库点 Star，不展示插件仓库宣传、捐赠或“生态”导流内容。
+- **采用原生文案**：面板命名为“能力中心”，呈现为 DSH 的功能模块；保留第三方条目的必要来源、版权和安全说明。
+- **保留业务能力**：Skill 安装与启停、MCP 配置和授权、专家召唤、插件管理及原有安全机制。
+
+以上是第一阶段改造目标，不代表界面改造已经全部完成。
 
 ## 装上一块面板
 
