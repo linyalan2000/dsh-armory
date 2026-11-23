@@ -29,11 +29,11 @@ const count = (haystack, needle) => haystack.split(needle).length - 1;
 // ── 1. 五个渲染点都必须归一 ────────────────────────────────────────────────
 ok(
   '行视图描述走 textOf',
-  source.includes("textOf(s.description) ? h('div', { className: 'dsh-mcp-skill-desc' }, textOf(s.description)) : null"),
+  source.includes("textOf(s.description) ? h('div', { className: 'dsh-mcp-skill-desc', title: textOf(s.description) }, skillBlurbOf(s)) : null"),
 );
 ok(
   '卡片视图描述走 textOf（空值回落「（无描述）」）',
-  source.includes("textOf(s.description)\n                                ? h('div', { className: 'dsh-mcp-skill-desc' }, textOf(s.description))"),
+  source.includes("textOf(s.description)\n                                ? h('div', { className: 'dsh-mcp-skill-desc', title: textOf(s.description) }, skillBlurbOf(s))"),
 );
 ok('详情描述走 textOf', source.includes("textOf(summary.description) || t('（无描述）')"));
 ok('详情「何时使用」走 textOf', source.includes("h('p', { className: 'dsh-mcp-skill-d-desc' }, textOf(summary.whenToUse))"));

@@ -46,7 +46,7 @@ section('0. 源码切片');
 const DISABLE_HELPERS = grab(
   source,
   "const SKILL_DISABLE_SOURCES = new Set",
-  "// ── Skill 分类升级",
+  "// ── Skill 业务分类（医疗聚焦版）",
 );
 ok('能定位启停来源白名单与 actionable 判定一节', DISABLE_HELPERS.length > 200, `len=${DISABLE_HELPERS.length}`);
 ok('Toggle 已支持 className', source.includes(
