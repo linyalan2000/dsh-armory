@@ -13,6 +13,17 @@
 
 第三方资源的来源、版权及安全说明仍按实际提供方展示，不用作本产品的宣传。
 
+## 在 DSH 对话里创建专家或技能
+
+在「专家」页点击 **新建专家**，或在「技能」页点击 **新建技能**：页面会切回 DSH 当前对话，并将相应的创建指令填入输入框（**不会自动发送**）。你可以直接补充需求，再让 DSH 的 AI 与你共同设计、生成和验证文件。
+
+- 自定义专家沿用 WorkBuddy 格式：`~/.workbuddy/plugins/marketplaces/my-experts/plugins/<专家名>/.codebuddy-plugin/plugin.json` 和 `agents/<专家名>.md`。如设置了 `WORKBUDDY_CONFIG_DIR`，优先使用该位置。
+- 自定义 Skill 使用 DSH 可发现的目录：`~/.agents/skills/<技能名>/SKILL.md`。
+- 这两个按钮是**对话引导入口**，不是“自动创建”按钮。只有在用户确认方案且 DSH 会话有本机写入权限后，AI 才能真正落盘。专家/技能列表可能需要刷新。
+- 草稿写入依赖 DSH 当前会话的标准输入框 `inputActions.setDraft` 能力；本改动仍需在用户所用 DSH 桌面端进行联调测试。
+
+针对性回归检查：`node test/create-with-ai.mjs`。
+
 ## 安装
 
 本项目仍采用 DSH 插件加载机制提供原生界面能力。安装需要 DSH 0.1.5-rc.1 或以上版本，Node.js 22.15 或以上。
