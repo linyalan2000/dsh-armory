@@ -26,17 +26,20 @@ const inputActions = {
   send() { sends += 1; },
 };
 bridge.requestCreateWithAi('expert');
-assert.ok(bridge.peek().includes('plugin.json'), 'expert workflow must include a recognized manifest');
+assert.ok(bridge.peek().includes('专属 AI 专家'), 'expert prompt should introduce the goal naturally');
+assert.ok(!/plugin\.json|WORKBUDDY_CONFIG_DIR|\.workbuddy/.test(bridge.peek()), 'expert prompt should not expose implementation details');
 assert.equal(bridge.fillPendingCreateWithAi(inputActions), true);
 assert.ok(draft.startsWith('已有草稿\n\n'), 'the existing draft is preserved');
 assert.equal(bridge.fillPendingCreateWithAi(inputActions), false, 'do not insert twice');
 assert.equal(writes, 1);
 bridge.requestCreateWithAi('skill');
-assert.ok(bridge.peek().includes('SKILL.md'), 'skill workflow must use the DSH skill format');
+assert.ok(bridge.peek().includes('自己的技能'), 'skill prompt should introduce the goal naturally');
+assert.ok(!/SKILL\.md|frontmatter|\.agents\/skills/.test(bridge.peek()), 'skill prompt should not expose implementation details');
 assert.equal(bridge.fillPendingCreateWithAi(null), false, 'do not lose pending prompt without composer access');
 assert.ok(bridge.peek(), 'keep queued prompt until insertion succeeds');
 assert.equal(bridge.fillPendingCreateWithAi(inputActions), true);
-assert.ok(draft.includes('SKILL.md'));
+assert.ok(draft.includes('自己的技能'));
+assert.ok(draft.includes('等我确认满意后'), 'creation must wait for user confirmation');
 assert.equal(sends, 0, 'never auto-send the drafted prompt');
 assert.deepEqual(selectedPanels, [null, null], 'both buttons return to conversation');
 console.log('create-with-ai: all checks passed');
